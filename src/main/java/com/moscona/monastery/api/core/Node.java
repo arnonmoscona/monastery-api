@@ -13,7 +13,24 @@ public interface Node<IdType> {
      * @return the unique ID assigned by the cluster to the node after announcement.
      * May be null before the node is in the joined state.
      */
-    public Optional<IdType> getId();
+    Optional<IdType> getId();
+
+    /**
+     * @return the cluster state of the node
+     */
+    NodeState getState();
+
+    /**
+     * Call announce when the node is ready to join the cluster.
+     * Some implementation may call this method implicitly.
+     * Calling this method multiple times is harmless (implementation contract), but would not cause re-announcement
+     * unless a previous announcement failed. The logic is up to the implementation.
+     * Having said this, it is not a good idea to call multiple time if the future completion has non-idempotent
+     * side effects.
+     * @return a CompletableFuture allowing a continuation after the node has joined the cluster,
+     * or a definite failure occurs.
+     */
+    CompletableFuture<Node> announce();
 
     /**
      * Asynchronously retrieves the implementation's capability that matches the specified capability
@@ -22,5 +39,5 @@ public interface Node<IdType> {
      * @return the implementation instance, wrapped in an Optional and a CompletableFuture. If the capability is not available
      * then the Optional will be empty.
      */
-    public <T extends Capability>CompletableFuture<Optional<? extends T>> getCapability(Class<T> capabilityClass);
+    <T extends Capability>CompletableFuture<Optional<? extends T>> getCapability(Class<T> capabilityClass);
 }
