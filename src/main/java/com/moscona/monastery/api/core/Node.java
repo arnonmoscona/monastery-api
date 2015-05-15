@@ -1,5 +1,6 @@
 package com.moscona.monastery.api.core;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -16,28 +17,17 @@ public interface Node<IdType> {
     Optional<IdType> getId();
 
     /**
-     * @return the cluster state of the node
-     */
-    NodeState getState();
-
-    /**
-     * Call announce when the node is ready to join the cluster.
-     * Some implementation may call this method implicitly.
-     * Calling this method multiple times is harmless (implementation contract), but would not cause re-announcement
-     * unless a previous announcement failed. The logic is up to the implementation.
-     * Having said this, it is not a good idea to call multiple time if the future completion has non-idempotent
-     * side effects.
-     * @return a CompletableFuture allowing a continuation after the node has joined the cluster,
-     * or a definite failure occurs.
-     */
-    CompletableFuture<Node> announce();
-
-    /**
      * Asynchronously retrieves the implementation's capability that matches the specified capability
      * (interface or class)
      * @param capabilityClass the specification of the desired capability
-     * @return the implementation instance, wrapped in an Optional and a CompletableFuture. If the capability is not available
-     * then the Optional will be empty.
+     * @return the implementation instance, wrapped in a CompletableFuture. If the capability is not available
+     * then the future will complete exceptionally.
      */
-    <T extends Capability>CompletableFuture<Optional<? extends T>> getCapability(Class<T> capabilityClass);
+    <T extends Capability> CompletableFuture<T> getCapability(Class<T> capabilityClass);
+
+    /**
+     * Gets all the capabilities of the node
+     * @return a copy of the internal capability list
+     */
+    List<Capability> getCapabilities();
 }
