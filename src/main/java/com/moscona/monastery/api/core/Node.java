@@ -1,5 +1,7 @@
 package com.moscona.monastery.api.core;
 
+import com.moscona.monastery.cando.NodeInformation;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -30,4 +32,11 @@ public interface Node<IdType> {
      * @return a copy of the internal capability list
      */
     List<Capability> getCapabilities();
+
+    /**
+     * A node that you can connect to is not very useful.
+     * The semantics of the connection string is implementation specific.
+     * @return the connection string. It may not be null, but may be a zero-length string.
+     */
+    String getConnectionString();
 }
