@@ -14,6 +14,9 @@ public interface NodeBuilder<NodeIdeType> {
      */
     NodeBuilder<NodeIdeType> add(Capability... capabilities);
 
+    default NodeBuilder<NodeIdeType> withCapabilities(Capability... capabilities) {return add(capabilities);}
+    default NodeBuilder<NodeIdeType> withCapability(Capability capability) {return add(capability);}
+
     /**
      * Builds the node
      * @return the node, after letting all capabilities have the option to validate themselves and the presence of their
