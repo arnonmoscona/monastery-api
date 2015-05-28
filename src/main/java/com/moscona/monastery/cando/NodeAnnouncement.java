@@ -45,7 +45,7 @@ public interface NodeAnnouncement<IdType>  extends Capability {
 
     /**
      * Add an action to be executed after the node enters a JOINED state. When called the capability will pass a
-     * reference to itself as an argument and to the Node as a second argument.
+     * reference to the Node as an argument.
      * @param action the action to be performed
      * @return a reference to the capability.
      */
