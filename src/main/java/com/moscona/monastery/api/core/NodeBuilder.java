@@ -1,6 +1,5 @@
 package com.moscona.monastery.api.core;
 
-import sun.plugin.dom.exception.InvalidStateException;
 
 /**
  * Created by Arnon Moscona on 5/13/2015.
@@ -21,7 +20,7 @@ public interface NodeBuilder<NodeIdeType> {
      * Builds the node
      * @return the node, after letting all capabilities have the option to validate themselves and the presence of their
      * dependencies.
-     * @throws InvalidStateException
+     * @throws Exception
      */
-    Node<NodeIdeType> build() throws InvalidStateException;
+    Node<NodeIdeType> build() throws Exception;
 }
