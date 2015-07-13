@@ -1,6 +1,4 @@
-package com.moscona.monastery.api.core;
-
-import com.moscona.monastery.cando.NodeInformation;
+package net.projectmonastery.monastery.api.core;
 
 import java.util.List;
 import java.util.Optional;

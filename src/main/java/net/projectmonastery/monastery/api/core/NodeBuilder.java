@@ -1,4 +1,4 @@
-package com.moscona.monastery.api.core;
+package net.projectmonastery.monastery.api.core;
 
 
 /**

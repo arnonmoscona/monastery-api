@@ -1,7 +1,7 @@
-package com.moscona.monastery.cando;
+package net.projectmonastery.monastery.cando;
 
-import com.moscona.monastery.api.core.Capability;
-import com.moscona.monastery.api.core.Node;
+import net.projectmonastery.monastery.api.core.Capability;
+import net.projectmonastery.monastery.api.core.Node;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;

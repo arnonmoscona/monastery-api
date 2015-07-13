@@ -1,4 +1,4 @@
-package com.moscona.monastery.cando;
+package net.projectmonastery.monastery.cando;
 
 /**
  * Created by Arnon Moscona on 5/9/2015.
