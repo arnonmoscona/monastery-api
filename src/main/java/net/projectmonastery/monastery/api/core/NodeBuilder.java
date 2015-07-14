@@ -10,11 +10,12 @@ public interface NodeBuilder<NodeIdeType> {
      * Adds one or more capabilities to the node being built.
      * @param capabilities the capabilities to add.
      * @return the builder itself
+     * @throws Exception if an of the parameters are null or incompatible with the implementation
      */
-    NodeBuilder<NodeIdeType> add(Capability... capabilities);
+    NodeBuilder<NodeIdeType> add(Capability... capabilities) throws Exception;
 
-    default NodeBuilder<NodeIdeType> withCapabilities(Capability... capabilities) {return add(capabilities);}
-    default NodeBuilder<NodeIdeType> withCapability(Capability capability) {return add(capability);}
+    default NodeBuilder<NodeIdeType> withCapabilities(Capability... capabilities) throws Exception {return add(capabilities);}
+    default NodeBuilder<NodeIdeType> withCapability(Capability capability) throws Exception {return add(capability);}
 
     /**
      * Builds the node
