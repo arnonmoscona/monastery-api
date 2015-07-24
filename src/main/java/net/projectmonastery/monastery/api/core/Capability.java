@@ -26,4 +26,12 @@ public interface Capability {
      * any activity that requires any access to the cluster.</em>
      */
     default void onAllCapabilitiesBound() throws IllegalStateException {}
+
+    /**
+     * This method may be called after <pre>onAllCapabilitiesBound()</pre> as a double check to verify that the
+     * capability believes that it is operational at this point. This is a last opportunity for the capability to
+     * fail fast before the node itself is used.
+     * @return true if there are no known problems and false otherwise. If false the node may become inoperative.
+     */
+    default boolean isReady() { return true;}
 }
