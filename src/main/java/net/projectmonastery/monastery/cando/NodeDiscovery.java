@@ -32,7 +32,7 @@ import java.util.function.Consumer;
 public interface NodeDiscovery<IdType> extends Capability {
     /**
      * Add an action to be invoked when new nodes are discovered by the cluster
-     * @param action the action to be called when a new node is discovered. the action consumes a NodeInformation<IdType>
+     * @param action the action to be called when a new node is discovered. The action consumes a NodeInformation&lt;IdType&gt;
      * @return a reference to the node discovery capability
      */
     NodeDiscovery addNodeDiscoveryListener(Consumer<NodeInformation<IdType>> action);

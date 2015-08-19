@@ -39,7 +39,7 @@ public interface NodeBuilder<NodeIdeType> {
      * Builds the node
      * @return the node, after letting all capabilities have the option to validate themselves and the presence of their
      * dependencies.
-     * @throws Exception
+     * @throws Exception if there are any problems building the node
      */
     Node<NodeIdeType> build() throws Exception;
 }
