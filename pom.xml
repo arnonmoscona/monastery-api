@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.projectmonastery</groupId>
+    <groupId>com.moscona.monastery</groupId>
     <artifactId>monastery-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>net.projectmonastery.monastery-api</name>
@@ -103,4 +103,22 @@
 
         </plugins>
     </build>
+
+    <distributionManagement>
+        <!-- https://maven.apache.org/pom.html#Distribution_Management -->
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>ossrh</id>
+            <name>libs-release</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>ossrh</id>
+            <name>libs-snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
