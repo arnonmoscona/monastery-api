@@ -20,7 +20,7 @@ package net.projectmonastery.monastery.api.core;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 /**
  * Created by Arnon Moscona on 5/8/2015.
@@ -38,10 +38,11 @@ public interface Node<IdType> {
      * Asynchronously retrieves the implementation's capability that matches the specified capability
      * (interface or class)
      * @param capabilityClass the specification of the desired capability
-     * @return the implementation instance, wrapped in a CompletableFuture. If the capability is not available
+     * @param <T> the capability class itself
+     * @return the implementation instance, wrapped in a CompletionStage. If the capability is not available
      * then the future will complete exceptionally.
      */
-    <T extends Capability> CompletableFuture<T> getCapability(Class<T> capabilityClass);
+    <T extends Capability> CompletionStage<T> getCapability(Class<T> capabilityClass);
 
     /**
      * Gets all the capabilities of the node

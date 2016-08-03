@@ -21,19 +21,19 @@ package net.projectmonastery.monastery.api.core;
 
 /**
  * Created by Arnon Moscona on 5/13/2015.
- * Builds nodes by adding capabilities and man aging capability life cycle callbacks
+ * Builds node providers by adding capabilities and managing capability life cycle callbacks
  */
-public interface NodeBuilder<NodeIdeType> {
+public interface NodeProviderBuilder<NodeIdeType> {
     /**
      * Adds one or more capabilities to the node being built.
      * @param capabilities the capabilities to add.
      * @return the builder itself
      * @throws Exception if an of the parameters are null or incompatible with the implementation
      */
-    NodeBuilder<NodeIdeType> add(Capability... capabilities) throws Exception;
+    NodeProviderBuilder<NodeIdeType> add(Capability... capabilities) throws Exception;
 
-    default NodeBuilder<NodeIdeType> withCapabilities(Capability... capabilities) throws Exception {return add(capabilities);}
-    default NodeBuilder<NodeIdeType> withCapability(Capability capability) throws Exception {return add(capability);}
+    default NodeProviderBuilder<NodeIdeType> withCapabilities(Capability... capabilities) throws Exception {return add(capabilities);}
+    default NodeProviderBuilder<NodeIdeType> withCapability(Capability capability) throws Exception {return add(capability);}
 
     /**
      * Builds the node
@@ -41,5 +41,5 @@ public interface NodeBuilder<NodeIdeType> {
      * dependencies.
      * @throws Exception if there are any problems building the node
      */
-    Node<NodeIdeType> build() throws Exception;
+    NodeProvider<NodeIdeType> build() throws Exception;
 }

@@ -51,5 +51,5 @@ public interface Capability {
      * fail fast before the node itself is used.
      * @return true if there are no known problems and false otherwise. If false the node may become inoperative.
      */
-    default boolean isReady() { return true;}
+    default boolean isReady() { return true; }
 }

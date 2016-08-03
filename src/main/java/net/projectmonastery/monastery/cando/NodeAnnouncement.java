@@ -22,7 +22,7 @@ import net.projectmonastery.monastery.api.core.Capability;
 import net.projectmonastery.monastery.api.core.Node;
 
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.function.Consumer;
 
 /**
@@ -43,10 +43,10 @@ public interface NodeAnnouncement<IdType>  extends Capability {
      * unless a previous announcement failed. The logic is up to the implementation.
      * Having said this, it is not a good idea to call multiple time if the future completion has non-idempotent
      * side effects.
-     * @return a CompletableFuture allowing a continuation after the node has joined the cluster,
+     * @return a CompletionStage allowing a continuation after the node has joined the cluster,
      * or a definite failure occurs.
      */
-    CompletableFuture<NodeAnnouncement<IdType>> announce();
+    CompletionStage<NodeAnnouncement<IdType>> announce();
 
     /**
      * @return the unique ID assigned by the cluster to the node after announcement.
