@@ -29,16 +29,16 @@ import java.util.function.Consumer;
  * The node discovery capability allows nodes to know about the existence of other nodes in the cluster.
  * See documentation at the monastery-docs project: https://github.com/arnonmoscona/monastery-docs
  */
-public interface NodeDiscovery<IdType> extends Capability {
+public interface NodeDiscovery extends Capability {
     /**
      * Add an action to be invoked when new nodes are discovered by the cluster
      * @param action the action to be called when a new node is discovered. The action consumes a NodeInformation&lt;IdType&gt;
      * @return a reference to the node discovery capability
      */
-    NodeDiscovery addNodeDiscoveryListener(Consumer<NodeInformation<IdType>> action);
+    NodeDiscovery addNodeDiscoveryListener(Consumer<NodeInformation> action);
 
     /**
      * @return a list of all the nodes discovered in the life of the cluster. Note that the list could be long.
      */
-    CompletionStage<List<NodeInformation<IdType>>> listKnowNodes();
+    CompletionStage<List<NodeInformation>> listKnowNodes();
 }

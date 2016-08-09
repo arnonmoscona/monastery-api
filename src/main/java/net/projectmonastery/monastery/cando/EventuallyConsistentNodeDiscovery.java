@@ -28,5 +28,5 @@ package net.projectmonastery.monastery.cando;
  * state (no new nodes join for a sufficiently long time), then eventually all nodes that query for the membership list
  * would get the same set of nodes.
  */
-public interface EventuallyConsistentNodeDiscovery<IdType> extends UnreliableNodeDiscovery<IdType> {
+public interface EventuallyConsistentNodeDiscovery extends UnreliableNodeDiscovery {
 }

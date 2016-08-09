@@ -19,21 +19,24 @@
 package net.projectmonastery.monastery.api.core;
 
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+
 /**
  * Created by Arnon Moscona on 5/13/2015.
  * Builds node providers by adding capabilities and managing capability life cycle callbacks
  */
-public interface NodeProviderBuilder<NodeIdeType> {
+public interface NodeProviderBuilder {
     /**
      * Adds one or more capabilities to the node being built.
      * @param capabilities the capabilities to add.
      * @return the builder itself
      * @throws Exception if an of the parameters are null or incompatible with the implementation
      */
-    NodeProviderBuilder<NodeIdeType> add(Capability... capabilities) throws Exception;
+    NodeProviderBuilder add(Capability... capabilities) throws Exception;
 
-    default NodeProviderBuilder<NodeIdeType> withCapabilities(Capability... capabilities) throws Exception {return add(capabilities);}
-    default NodeProviderBuilder<NodeIdeType> withCapability(Capability capability) throws Exception {return add(capability);}
+    default NodeProviderBuilder withCapabilities(Capability... capabilities) throws Exception {return add(capabilities);}
+    default NodeProviderBuilder withCapability(Capability capability) throws Exception {return add(capability);}
 
     /**
      * Builds the node
@@ -41,5 +44,21 @@ public interface NodeProviderBuilder<NodeIdeType> {
      * dependencies.
      * @throws Exception if there are any problems building the node
      */
-    NodeProvider<NodeIdeType> build() throws Exception;
+    NodeProvider build() throws Exception;
+
+    /**
+     * A fluent NodeProvider build method, allowing for a more functional exception handling style.
+     * @return A CompletionStage that either completes normally with the newly built NodeProvider
+     * or completes exceptionally with the exception that was thrown by the build  method.
+     */
+    default CompletionStage<NodeProvider> buildAnd() {
+        CompletableFuture<NodeProvider> future = new CompletableFuture<>();
+        try {
+            NodeProvider nodeProvider = build();
+            future.complete(nodeProvider);
+        } catch (Exception e) {
+            future.completeExceptionally(e);
+        }
+        return future;
+    }
 }

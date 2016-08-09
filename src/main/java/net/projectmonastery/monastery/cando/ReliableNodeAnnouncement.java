@@ -27,5 +27,5 @@ package net.projectmonastery.monastery.cando;
  * at least an eventually consistent state among them) then this "core set" is guaranteed to be notified of the new
  * node on joining.
  */
-public interface ReliableNodeAnnouncement<IdType> extends UnreliableNodeAnnouncement {
+public interface ReliableNodeAnnouncement extends UnreliableNodeAnnouncement {
 }

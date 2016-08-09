@@ -33,7 +33,7 @@ public interface Capability {
      * so it is not advisable to do much more than initialize a private reference at this stage.</em></p>
      * @param context a reference to the owning node.
      */
-    default void bind(Node<?> context) {}
+    default void bind(Node context) {}
 
     /**
      * This optional method is called during node build after all the capabilities have been bound to the node.

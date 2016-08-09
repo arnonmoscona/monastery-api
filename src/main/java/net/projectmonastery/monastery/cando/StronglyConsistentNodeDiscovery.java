@@ -25,5 +25,5 @@ package net.projectmonastery.monastery.cando;
  * convergence.
  * The node discovery listener has no better reliability guarantee than the parent interfaces.
  */
-public interface StronglyConsistentNodeDiscovery<IdType> extends EventuallyConsistentNodeDiscovery<IdType> {
+public interface StronglyConsistentNodeDiscovery extends EventuallyConsistentNodeDiscovery {
 }

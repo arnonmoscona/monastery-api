@@ -27,12 +27,12 @@ import java.util.concurrent.CompletionStage;
  * The Node interface is the root interface between local code and the cluster.
  * See documentation at the monastery-docs project: https://github.com/arnonmoscona/monastery-docs
  */
-public interface Node<IdType> {
+public interface Node {
     /**
      * @return the unique ID assigned by the cluster to the node after announcement.
      * May be null before the node is in the joined state.
      */
-    Optional<IdType> getId();
+    Optional getId();
 
     /**
      * Asynchronously retrieves the implementation's capability that matches the specified capability

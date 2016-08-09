@@ -24,11 +24,11 @@ import java.util.concurrent.CompletionStage;
  * Created by Arnon Moscona on 8/3/2016.
  * The node provider is the means of connecting to the cluster and obtaining a functioning Node.
  */
-public interface NodeProvider<NodeIdeType> {
+public interface NodeProvider {
 
     /**
      * Connects to the cluster, and when connected provides a Node.
      * @return a CompletionStage that whn complete provides a connected Node
      */
-    CompletionStage<Node<NodeIdeType>> connect();
+    CompletionStage<Node> connect();
 }

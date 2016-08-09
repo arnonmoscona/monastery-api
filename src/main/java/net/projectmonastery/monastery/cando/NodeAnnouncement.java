@@ -30,7 +30,7 @@ import java.util.function.Consumer;
  * The NodeAnnouncement capability allows nodes to announce themselves to the cluster and implementations
  * are expected to also set the node state.
  */
-public interface NodeAnnouncement<IdType>  extends Capability {
+public interface NodeAnnouncement  extends Capability {
     /**
      * @return the cluster state of the node
      */
@@ -46,7 +46,7 @@ public interface NodeAnnouncement<IdType>  extends Capability {
      * @return a CompletionStage allowing a continuation after the node has joined the cluster,
      * or a definite failure occurs.
      */
-    CompletionStage<NodeAnnouncement<IdType>> announce();
+    CompletionStage<NodeAnnouncement> announce();
 
     /**
      * @return the unique ID assigned by the cluster to the node after announcement.
@@ -54,7 +54,7 @@ public interface NodeAnnouncement<IdType>  extends Capability {
      * this is the implementation pattern.
      * May be null before the node is in the joined state.
      */
-    Optional<IdType> getId();
+    Optional getId();
 
     /**
      * @return the node that the capability is bound to.
@@ -67,5 +67,5 @@ public interface NodeAnnouncement<IdType>  extends Capability {
      * @param action the action to be performed
      * @return a reference to the capability.
      */
-    NodeAnnouncement<IdType> addJoinListener(Consumer<Node<IdType>> action);
+    NodeAnnouncement addJoinListener(Consumer<Node> action);
 }
