@@ -16,24 +16,14 @@
  *
  */
 
-package net.projectmonastery.monastery.cando;
-
-
-import net.projectmonastery.monastery.api.core.Node;
-
-import java.util.concurrent.CompletionStage;
+package net.projectmonastery.monastery.capabilitiy;
 
 /**
- * Created by Arnon Moscona on 7/7/2015.
- * A capability to force node disconnect (orderly shutdown)
+ * Created by Arnon Moscona on 5/27/2015.
+ * Adds a strong consistency guarantee to the membership list. As soon as the cluster membership reaches a steady
+ * state, all nodes that query for the membership list will get the same set of nodes without having to wait for a
+ * convergence.
+ * The node discovery listener has no better reliability guarantee than the parent interfaces.
  */
-public interface NodeDisconnect {
-    /**
-     * Instructs the node to disconnect and clean resources.
-     * May clear the ID (implementation dependent).
-     * May not take effect immediately.
-     * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
-     * @return a CompletionStage that completes when the shutdown process is complete.
-     */
-    CompletionStage<Node> disconnect();
+public interface StronglyConsistentNodeDiscovery extends EventuallyConsistentNodeDiscovery {
 }

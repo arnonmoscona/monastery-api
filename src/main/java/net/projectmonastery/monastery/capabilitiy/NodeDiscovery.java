@@ -16,7 +16,7 @@
  *
  */
 
-package net.projectmonastery.monastery.cando;
+package net.projectmonastery.monastery.capabilitiy;
 
 import net.projectmonastery.monastery.api.core.Capability;
 

@@ -16,11 +16,11 @@
  *
  */
 
-package net.projectmonastery.monastery.cando;
+package net.projectmonastery.monastery.capabilitiy;
 
 /**
  * Created by Arnon Moscona on 5/27/2015.
- * A NodeAnnouncement capability with no reliability guarantees
+ * A NodeDiscovery capability with no reliability guarantees.
  */
-public interface UnreliableNodeAnnouncement extends NodeAnnouncement {
+public interface UnreliableNodeDiscovery extends NodeDiscovery {
 }

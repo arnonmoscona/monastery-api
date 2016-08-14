@@ -16,11 +16,24 @@
  *
  */
 
-package net.projectmonastery.monastery.cando;
+package net.projectmonastery.monastery.capabilitiy;
+
+
+import net.projectmonastery.monastery.api.core.Node;
+
+import java.util.concurrent.CompletionStage;
 
 /**
- * Created by Arnon Moscona on 5/27/2015.
- * A NodeDiscovery capability with no reliability guarantees.
+ * Created by Arnon Moscona on 7/7/2015.
+ * A capability to force node disconnect (orderly shutdown)
  */
-public interface UnreliableNodeDiscovery extends NodeDiscovery {
+public interface NodeDisconnect {
+    /**
+     * Instructs the node to disconnect and clean resources.
+     * May clear the ID (implementation dependent).
+     * May not take effect immediately.
+     * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
+     * @return a CompletionStage that completes when the shutdown process is complete.
+     */
+    CompletionStage<Node> disconnect();
 }
