@@ -16,24 +16,24 @@
  *
  */
 
-package net.projectmonastery.monastery.capabilitiy;
-
-
-import net.projectmonastery.monastery.api.core.Node;
-
-import java.util.concurrent.CompletionStage;
+package net.projectmonastery.monastery.capability;
 
 /**
- * Created by Arnon Moscona on 7/7/2015.
- * A capability to force node disconnect (orderly shutdown)
+ * Created by Arnon Moscona on 5/9/2015.
+ * Possible states of a Node.
  */
-public interface NodeDisconnect {
-    /**
-     * Instructs the node to disconnect and clean resources.
-     * May clear the ID (implementation dependent).
-     * May not take effect immediately.
-     * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
-     * @return a CompletionStage that completes when the shutdown process is complete.
-     */
-    CompletionStage<Node> disconnect();
+public enum NodeState {
+    DISCONNECTED("Initial state, unannounced. Not ready for use"),
+    ANNOUNCED("Announced. Waiting to be joined. Not ready for use"),
+    JOINED("Joined cluster. ID is valid. May be connected");
+
+    private String description;
+
+    NodeState(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

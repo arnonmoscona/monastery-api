@@ -16,24 +16,11 @@
  *
  */
 
-package net.projectmonastery.monastery.capabilitiy;
+package net.projectmonastery.monastery.capability;
 
 /**
- * Created by Arnon Moscona on 5/9/2015.
- * Possible states of a Node.
+ * Created by Arnon Moscona on 5/27/2015.
+ * A NodeAnnouncement capability with no reliability guarantees
  */
-public enum NodeState {
-    DISCONNECTED("Initial state, unannounced. Not ready for use"),
-    ANNOUNCED("Announced. Waiting to be joined. Not ready for use"),
-    JOINED("Joined cluster. ID is valid. May be connected");
-
-    private String description;
-
-    NodeState(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
+public interface UnreliableNodeAnnouncement extends NodeAnnouncement {
 }

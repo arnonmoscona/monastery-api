@@ -16,9 +16,10 @@
  *
  */
 
-package net.projectmonastery.monastery.cando;
+package net.projectmonastery.monastery.capability;
 
 import net.projectmonastery.monastery.api.core.Capability;
+import net.projectmonastery.monastery.capability.NodeInformation;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

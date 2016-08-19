@@ -16,13 +16,25 @@
  *
  */
 
-package net.projectmonastery.monastery.capabilitiy;
+package net.projectmonastery.monastery.capability;
+
+
+import net.projectmonastery.monastery.api.core.Node;
+
+import java.util.concurrent.CompletableFuture;
+
 
 /**
- * Created by Arnon Moscona on 5/15/2015.
- * Basic information about nodes.
+ * Created by Arnon Moscona on 7/7/2015.
+ * A capability to force node disconnect (orderly shutdown)
  */
-public interface NodeInformation {
-    Object getId();
-    String getConnectionString();
+public interface NodeDisconnect {
+    /**
+     * Instructs the node to disconnect and clean resources.
+     * May clear the ID (implementation dependent).
+     * May not take effect immediately.
+     * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
+     * @return a CompletionStage that completes when the shutdown process is complete.
+     */
+    CompletableFuture<Node> disconnect();
 }
