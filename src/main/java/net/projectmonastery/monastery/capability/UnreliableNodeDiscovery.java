@@ -16,7 +16,7 @@
  *
  */
 
-package net.projectmonastery.monastery.capabilitiy;
+package net.projectmonastery.monastery.capability;
 
 /**
  * Created by Arnon Moscona on 5/27/2015.
