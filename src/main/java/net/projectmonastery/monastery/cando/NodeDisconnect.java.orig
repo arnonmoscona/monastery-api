@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016. Arnon Moscona
+ * Copyright (c) 2015. Arnon Moscona
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU Lesser General Public License as published by
@@ -16,20 +16,25 @@
  *
  */
 
-package net.projectmonastery.monastery.api.core;
+package net.projectmonastery.monastery.cando;
 
+
+import net.projectmonastery.monastery.api.core.Node;
 
 import java.util.concurrent.CompletableFuture;
 
-/**
- * Created by Arnon Moscona on 8/3/2016.
- * The node provider is the means of connecting to the cluster and obtaining a functioning Node.
- */
-public interface NodeProvider {
 
+/**
+ * Created by Arnon Moscona on 7/7/2015.
+ * A capability to force node disconnect (orderly shutdown)
+ */
+public interface NodeDisconnect {
     /**
-     * Connects to the cluster, and when connected provides a Node.
-     * @return a CompletionStage that whn complete provides a connected Node
+     * Instructs the node to disconnect and clean resources.
+     * May clear the ID (implementation dependent).
+     * May not take effect immediately.
+     * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
+     * @return a CompletionStage that completes when the shutdown process is complete.
      */
-    CompletableFuture<Node> connect();
+    CompletableFuture<Node> disconnect();
 }
