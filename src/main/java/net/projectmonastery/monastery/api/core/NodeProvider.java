@@ -18,7 +18,8 @@
 
 package net.projectmonastery.monastery.api.core;
 
-import java.util.concurrent.CompletionStage;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by Arnon Moscona on 8/3/2016.
@@ -30,5 +31,5 @@ public interface NodeProvider {
      * Connects to the cluster, and when connected provides a Node.
      * @return a CompletionStage that whn complete provides a connected Node
      */
-    CompletionStage<Node> connect();
+    CompletableFuture<Node> connect();
 }

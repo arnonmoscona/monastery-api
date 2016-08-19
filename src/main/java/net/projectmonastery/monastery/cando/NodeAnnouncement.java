@@ -22,7 +22,7 @@ import net.projectmonastery.monastery.api.core.Capability;
 import net.projectmonastery.monastery.api.core.Node;
 
 import java.util.Optional;
-import java.util.concurrent.CompletionStage;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 /**
@@ -46,7 +46,7 @@ public interface NodeAnnouncement  extends Capability {
      * @return a CompletionStage allowing a continuation after the node has joined the cluster,
      * or a definite failure occurs.
      */
-    CompletionStage<NodeAnnouncement> announce();
+    CompletableFuture<NodeAnnouncement> announce();
 
     /**
      * @return the unique ID assigned by the cluster to the node after announcement.

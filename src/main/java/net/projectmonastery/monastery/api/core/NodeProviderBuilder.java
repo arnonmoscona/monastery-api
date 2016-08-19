@@ -20,7 +20,6 @@ package net.projectmonastery.monastery.api.core;
 
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 
 /**
  * Created by Arnon Moscona on 5/13/2015.
@@ -51,7 +50,7 @@ public interface NodeProviderBuilder {
      * @return A CompletionStage that either completes normally with the newly built NodeProvider
      * or completes exceptionally with the exception that was thrown by the build  method.
      */
-    default CompletionStage<NodeProvider> buildAnd() {
+    default CompletableFuture<NodeProvider> buildAnd() {
         CompletableFuture<NodeProvider> future = new CompletableFuture<>();
         try {
             NodeProvider nodeProvider = build();

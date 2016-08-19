@@ -20,7 +20,7 @@ package net.projectmonastery.monastery.api.core;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletionStage;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by Arnon Moscona on 5/8/2015.
@@ -42,7 +42,7 @@ public interface Node {
      * @return the implementation instance, wrapped in a CompletionStage. If the capability is not available
      * then the future will complete exceptionally.
      */
-    <T extends Capability> CompletionStage<T> getCapability(Class<T> capabilityClass);
+    <T extends Capability> CompletableFuture<T> getCapability(Class<T> capabilityClass);
 
     /**
      * Gets all the capabilities of the node

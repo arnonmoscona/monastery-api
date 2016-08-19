@@ -21,7 +21,7 @@ package net.projectmonastery.monastery.cando;
 import net.projectmonastery.monastery.api.core.Capability;
 
 import java.util.List;
-import java.util.concurrent.CompletionStage;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 /**
@@ -40,5 +40,5 @@ public interface NodeDiscovery extends Capability {
     /**
      * @return a list of all the nodes discovered in the life of the cluster. Note that the list could be long.
      */
-    CompletionStage<List<NodeInformation>> listKnowNodes();
+    CompletableFuture<List<NodeInformation>> listKnowNodes();
 }

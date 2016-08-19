@@ -21,7 +21,8 @@ package net.projectmonastery.monastery.cando;
 
 import net.projectmonastery.monastery.api.core.Node;
 
-import java.util.concurrent.CompletionStage;
+import java.util.concurrent.CompletableFuture;
+
 
 /**
  * Created by Arnon Moscona on 7/7/2015.
@@ -35,5 +36,5 @@ public interface NodeDisconnect {
      * Access to the node while the disconnect process is incomplete may be unsafe (implementation dependent).
      * @return a CompletionStage that completes when the shutdown process is complete.
      */
-    CompletionStage<Node> disconnect();
+    CompletableFuture<Node> disconnect();
 }
